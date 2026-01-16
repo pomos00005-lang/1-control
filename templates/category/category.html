@@ -1,0 +1,29 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'styles/style.css' %}">
+
+<main class="container">
+
+    <!-- Detail -->
+    <section class="news-detail">
+        <h1 class="news-title">{{ catygory.name_catygory }}</h1>
+    </section>
+
+    <!-- Products -->
+    <section class="comments">
+
+        {% if category.product.all %}
+            <ul class="comments-list">
+                {% for i in category.product.all %}
+                    <li class="comment-item">
+                        <img src="{{ i.image.url }}" alt="{{ i.name_product }}">
+                        <h3>{{ i.name_product }}</h3>
+                        <p class="price">Цена: {{ i.price }}</p>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p class="no-comments">Нет продуктов</p>
+        {% endif %}
+    </section>
+
+</main>

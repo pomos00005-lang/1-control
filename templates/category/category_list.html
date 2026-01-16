@@ -1,0 +1,35 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'styles/style.css' %}">
+
+<main class="container">
+
+    <section class="category-section">
+        <h1 class="section-title">Список категорий</h1>
+        <ul class="category-list">
+            {% for c in category_list %}
+                <li>
+                    <a href="/category/{{ c.id }}/" class="category-link">
+                        {{ c.name_category }}
+                    </a>
+                </li>
+            {% empty %}
+                <li class="empty-text">Категорий нет</li>
+            {% endfor %}
+        </ul>
+    </section>
+
+    <section class="product-section">
+        <h1 class="section-title">Список товаров</h1>
+        <ul class="product-list">
+            {% for p in product_list %}
+                <li class="product-card">
+                    <img src="{{ p.image.url }}" alt="{{ p.name_product }}">
+                    <p>{{ p.name_product }}</p>
+                </li>
+            {% empty %}
+                <li class="empty-text">Товаров нет</li>
+            {% endfor %}
+        </ul>
+    </section>
+
+</main>
